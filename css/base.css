@@ -1,0 +1,89 @@
+:root {
+    --base-font-size: 16px;
+
+    --color-primary: rgb(28, 60, 146);
+    --color-primary-text: rgb(245, 245, 245);
+
+    --color-primary-darker: rgb(0, 56, 120);
+
+    --color-secondary: rgb(235, 125, 0);
+    --color-secondary-text: rgb(25, 25, 25);
+
+    --color-accent: rgb(40, 165, 88);
+    --color-accent-text: rgb(245, 245, 245);
+}
+
+body {
+    font-family: 'Calibri', Arial, sans-serif;
+    /* Fluid Typography */
+    font-size: calc( var(--base-font-size) + 6 * ((100vw - 320px) / 680));
+}
+
+div {
+    padding: 1rem 2rem;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.75rem;
+}
+
+p {
+    font-size: 1.15rem;
+}
+
+button {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-radius: 2.5rem;
+    padding: 1.25rem 1.75rem;
+    font-size: 1.5rem;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+.header {
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
+}
+
+.description {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-text);
+    margin-bottom: 2rem;
+}
+
+.leaderboard {
+    background-color: var(--color-primary-darker);
+    color: var(--color-primary-text);
+    border: 2px solid var(--color-secondary);
+    text-align: center;
+    width: 80%;
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.leaderboard-header {
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
