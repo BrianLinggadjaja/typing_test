@@ -11,7 +11,8 @@
         <link rel="stylesheet" href="./css/base.css">
 
         <!-- Scripts -->
-        <script src="./js/test.js" defer></script>
+        <script src="./js/modeSelector.js" defer></script>
+        <script src="./js/entry.js" defer></script>
     </head>
 
     <body>
@@ -39,8 +40,8 @@
             </section>
 
             <section id="actions" class="actions">
-                <button type="button">Race against time</button>
-                <button type="button">Your own pace</button>
+                <button id="raceButton" class="primary" type="button">Race against time</button>
+                <button id="paceButton" class="primary" type="button">Your own pace</button>
             </section>
 
             <section id="typingTest" class="typing-test hide">
@@ -54,6 +55,19 @@
 
                 <div class="status"></div>
             </section>
+
+            <div class="race-modal hide">
+                <div class="race-selector">
+                    <h2>Select minute(s)</h2>
+                    <div>
+                        <button id="raceOne" class="race-select-time primary" type="button">1 Minute</button>
+                        <button id="raceTwo" class="race-select-time primary" type="button">2 Minutes</button>
+                        <button id="raceThree" class="race-select-time primary" type="button">3 Minutes</button>
+                        <button id="raceFive" class="race-select-time primary" type="button">5 Minutes</button>
+                    </div>
+                    <button id="raceCancel" class="race-select-cancel secondary" type="button">Cancel</button>
+                </div>
+            </div>
         </main>
     </body>
 </html>

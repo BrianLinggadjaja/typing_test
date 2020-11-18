@@ -7,6 +7,7 @@
     --color-primary-text: rgb(245, 245, 245);
 
     --color-secondary: rgb(255, 150, 60);
+    --color-secondary-darker: rgb(235, 120, 40);
     --color-secondary-text: rgb(25, 25, 25);
 
     --color-accent: rgb(160, 15, 80);
@@ -22,6 +23,8 @@
 
     --color-response: rgb(65, 35, 45);
     --color-response-text: rgb(245, 245, 245);
+
+    --color-modal: rgb(230, 230, 230);
 }
 
 
@@ -69,8 +72,6 @@ section {
 }
 
 button {
-    background-color: var(--color-accent);
-    color: var(--color-accent-text);
     cursor: pointer;
     border-radius: 2.5rem;
     font-size: 1.25rem;
@@ -78,11 +79,27 @@ button {
     padding: 1rem 1.25rem;
 }
 
-button:hover,
-button:focus,
-button:active {
-    background-color: var(--color-accent-darker);
+button.primary {
+    background-color: var(--color-accent);
     color: var(--color-accent-text);
+
+}
+
+button:hover.primary,
+button:focus.primary,
+button:active.primary {
+    background-color: var(--color-accent-darker);
+}
+
+button.secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-text);
+}
+
+button:hover.secondary,
+button:focus.secondary,
+button:active.secondary {
+    background-color: var(--color-secondary-darker);
 }
 
 textarea {
@@ -167,4 +184,49 @@ textarea {
     background-color: var(--color-response);
     color: var(--color-response-text);
     font-size: 0.75em;
+}
+
+.race-modal {
+    background-color: rgba(25, 25, 25, 0.9);
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.race-selector {
+    background-color: var(--color-modal);
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    max-width: 25rem;
+    border-radius: 0.5rem;
+    padding: 2rem 1.5rem;
+}
+
+.race-select-time {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-radius: 0.5rem;
+    min-width: 8rem;
+}
+
+.race-select-cancel {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-text);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.race-selector button {
+    margin-bottom: 1rem;
 }
