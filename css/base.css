@@ -1,61 +1,115 @@
+/* Variables */
 :root {
-    --base-font-size: 16px;
+    --color-background: rgb(230, 230, 230);
 
     --color-primary: rgb(28, 60, 146);
+    --color-primary-darker: rgb(12, 49, 150);
     --color-primary-text: rgb(245, 245, 245);
 
-    --color-primary-darker: rgb(0, 56, 120);
-
-    --color-secondary: rgb(235, 125, 0);
+    --color-secondary: rgb(255, 150, 60);
     --color-secondary-text: rgb(25, 25, 25);
 
-    --color-accent: rgb(40, 165, 88);
+    --color-accent: rgb(160, 15, 80);
+    --color-accent-darker: rgb(135, 25, 75);
     --color-accent-text: rgb(245, 245, 245);
+
+    --color-table: rgb(45, 45, 45);
+    --color-table-border: rgb(90, 90, 90);
+    --color-table-text: rgb(245, 245, 245);
+
+    --color-prompt: rgb(25, 30, 45);
+    --color-prompt-text: rgb(245, 245, 245);
+
+    --color-response: rgb(65, 35, 45);
+    --color-response-text: rgb(245, 245, 245);
 }
 
+
+/* Layout */
+html,
 body {
+    background-color: var(--color-background);
     font-family: 'Calibri', Arial, sans-serif;
     /* Fluid Typography */
-    font-size: calc( var(--base-font-size) + 6 * ((100vw - 320px) / 680));
+    font-size: calc(16px + (18 - 16) * ((100vw - 300px) / (1600 - 300)));
+    line-height: 1.5;
 }
-
-div {
-    padding: 1rem 2rem;
-}
-
 
 h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+p {
     font-weight: bold;
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
 }
 
 h2 {
-    font-size: 2.75rem;
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
 }
 
 p {
-    font-size: 1.15rem;
+    font-size: 1rem;
+}
+
+header {
+    margin-bottom: 3rem;
+}
+
+section {
+    margin-bottom: 3rem;
 }
 
 button {
     background-color: var(--color-accent);
     color: var(--color-accent-text);
+    cursor: pointer;
     border-radius: 2.5rem;
-    padding: 1.25rem 1.75rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    margin: 0 0.5rem;
+    padding: 1rem 1.25rem;
 }
 
-section {
-    margin-bottom: 4rem;
+button:hover,
+button:focus,
+button:active {
+    background-color: var(--color-accent-darker);
+    color: var(--color-accent-text);
 }
 
+textarea {
+    height: 100%;
+    min-height: 5rem;
+    width: 100%;
+    resize: none;
+    padding: 0.75rem 1rem;
+}
+
+
+/* Helpers */
+.cont {
+    padding: 1rem 2rem;
+}
+
+.hl {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+}
+
+.hide {
+    display: none !important;
+}
+
+
+/* Components */
 .header {
     background-color: var(--color-primary);
     color: var(--color-primary-text);
@@ -64,21 +118,21 @@ section {
 .description {
     background-color: var(--color-secondary);
     color: var(--color-secondary-text);
-    margin-bottom: 2rem;
+    padding: 1rem 2rem;
 }
 
 .leaderboard {
-    background-color: var(--color-primary-darker);
-    color: var(--color-primary-text);
-    border: 2px solid var(--color-secondary);
     text-align: center;
-    width: 80%;
-    max-width: 30rem;
-    margin: 0 auto;
 }
 
-.leaderboard-header {
+.leaderboard-score {
+    background-color: var(--color-table);
+    color: var(--color-table-text);
+    border: 0.25rem solid var(--color-table-border);
     text-align: center;
+    width: 75%;
+    max-width: 30rem;
+    margin: 0 auto;
 }
 
 .actions {
@@ -86,4 +140,31 @@ section {
     flex-flow: row;
     justify-content: center;
     align-items: center;
+}
+
+.typing-test {
+    font-size: 1.5rem;
+    max-width: 75rem;
+    margin: 0 auto;
+    margin-top: 6rem;
+    padding: 1rem 2rem;
+}
+
+.prompt {
+    background-color: var(--color-prompt);
+    color: var(--color-prompt-text);
+    margin-bottom: 2rem;
+}
+
+.response {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.response > textarea {
+    background-color: var(--color-response);
+    color: var(--color-response-text);
+    font-size: 0.75em;
 }

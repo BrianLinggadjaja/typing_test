@@ -9,40 +9,51 @@
         <!-- Style -->
         <link rel="stylesheet" href="./css/reset.min.css">
         <link rel="stylesheet" href="./css/base.css">
+
+        <!-- Scripts -->
+        <script src="./js/test.js" defer></script>
     </head>
 
     <body>
         <header>
-            <div class="header">
+            <div class="header cont">
                 <h1>Typing Test</h1>
             </div>
 
-            <div class="description">
-                <p>Practice your typing skills!</p>
+            <div class="description cont">
+                <p>Start your typing test by selecting one of the typing modes! Race against time or go at your own pace with a randomized prompt.</p>
             </div>
         </header>
 
         <main>
-            <section id="leaderboard">
-                <h2 class="leaderboard-header">Leaderboard</h2>
+            <section id="leaderboard" class="leaderboard">
+                <h2>Leaderboard</h2>
+                <h3>No scores recorded! Start a test to review your scores after.</h3>
 
-                <table class="leaderboard">
+                <table class="leaderboard-score hide">
                     <tr>
                         <th>Mode</th>
                         <th>Score</th>
-                    </tr>
-                    <tr>
-                        <td>Test</td>
-                        <td>100 WPM</td>
                     </tr>
                 </table>
             </section>
 
             <section id="actions" class="actions">
-                <button type="button">Start Test</button>
+                <button type="button">Race against time</button>
+                <button type="button">Your own pace</button>
             </section>
 
-            <section id="typingTest"></section> 
+            <section id="typingTest" class="typing-test hide">
+                <div class="prompt cont">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit laoreet id donec ultrices. Lobortis mattis aliquam faucibus purus in massa tempor. Consectetur adipiscing elit duis tristique. Viverra aliquet eget sit amet tellus cras.
+                </div>
+
+                <div class="response">
+                    <textarea placeholder="Start typing here..."></textarea>
+                </div>
+
+                <div class="status"></div>
+            </section>
         </main>
     </body>
 </html>
