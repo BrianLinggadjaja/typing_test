@@ -1,0 +1,110 @@
+
+
+/* Components */
+.header {
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
+}
+
+.description {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-text);
+    padding: 1rem 2rem;
+}
+
+.leaderboard {
+    text-align: center;
+}
+
+.leaderboard-score {
+    background-color: var(--color-table);
+    color: var(--color-table-text);
+    border: 0.25rem solid var(--color-table-border);
+    text-align: center;
+    width: 75%;
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.actions {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.typing-test {
+    font-size: 1.5rem;
+    max-width: 75rem;
+    margin: 0 auto;
+    margin-top: 6rem;
+    padding: 1rem 2rem;
+}
+
+.prompt {
+    background-color: var(--color-prompt);
+    color: var(--color-prompt-text);
+    margin-bottom: 2rem;
+}
+
+.response {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.response > textarea {
+    background-color: var(--color-response);
+    color: var(--color-response-text);
+    font-size: 0.75em;
+}
+
+.race-modal {
+    background-color: rgba(25, 25, 25, 0.9);
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.race-selector {
+    background-color: var(--color-modal);
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    max-width: 25rem;
+    border-radius: 0.5rem;
+    padding: 2rem 1.5rem;
+}
+
+.race-selector-options {
+    margin-top: 1rem;
+}
+
+.race-select-time {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-radius: 0.5rem;
+    min-width: 8rem;
+}
+
+.race-select-cancel {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-text);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.race-selector button {
+    margin-bottom: 1rem;
+}

@@ -1,3 +1,24 @@
+// Set typing test mode and pass an OPTIONAL selectedTime if any specified
+function setMode(selectedMode, selectedTime) {
+    const validModes = {
+        'race': true,
+        'pace': true
+    }
+
+    // Check if selectedMode matches a validMode
+    if (validModes[selectedMode]) {
+        if (selectedMode === 'race') {
+            setTestTimer(selectedTime)
+        } else if (selectedMode === 'pace') {
+            setTestTimer(0)
+            console.log('pace')
+        }
+    } else {
+        console.error('Invalid selectedMode in setMode()')
+    }
+}
+
+// Option a time selector modal when "race" mode selected
 function toggleRaceModal() {
     const raceModal = document.querySelector('.race-modal')
     let isModalHidden = raceModal.classList.contains('hide')
@@ -6,18 +27,5 @@ function toggleRaceModal() {
         raceModal.classList.remove('hide')
     } else {
         raceModal.classList.add('hide')
-    }
-}
-
-function startRaceTimer(selectedTime) {
-    const validTimes = {
-        '1': 1,
-        '2': 2,
-        '3': 3,
-        '5': 5
-    }
-
-    if (validTimes[selectedTime]) {
-        console.log(validTimes[selectedTime])
     }
 }
