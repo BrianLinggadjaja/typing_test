@@ -49,6 +49,7 @@ function updatePrompt() {
     // Add a span for each character
     for (const character of characterArray) {
         let span = document.createElement('span')
+        span.classList.add('char')
         span.innerText = character
 
         promptElement.appendChild(span)

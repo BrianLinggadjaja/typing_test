@@ -1,18 +1,24 @@
 function checkForTestProgress() {
+    const promptWordsArray = selectedPrompt.split(' ')
     let response = document.querySelector('#response').value
-
-    console.log(response)
 
     // Check for FULL string match and mark as complete
     if (!hasTimerStarted) {
         startTestTimer()
+        checkWordCompletion(promptWordsArray)
     } else if (response === selectedPrompt) {
-        // markTestCompleted
-        console.log(true)
+        // Stop timer & show results & addScoreEntry(selectedMode, totalScore)
+        clearInterval(timer)
+    } else {
+        // check for current word
+        // compare & highlight characters
+        // some way to check for word completion?
+        checkWordCompletion(promptWordsArray)
     }
+}
 
-    console.log(selectedPrompt)
-    console.log(response)
+function checkWordCompletion(promptWordsArray) {
+    console.log(promptWordsArray)
 }
 
 function resetTypingTest() {
