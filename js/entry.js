@@ -16,4 +16,10 @@
 
     // Pace Mode Action
     const paceButton = document.querySelector('#paceButton')
+
+    paceButton.addEventListener('click', setMode.bind(this, 'pace'))
+
+    // Response Actions
+    const responseTextarea = document.querySelector('#response')
+    responseTextarea.addEventListener('keydown', startTestTimer)
 })()

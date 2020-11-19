@@ -1,20 +1,37 @@
 // Set typing test mode and pass an OPTIONAL selectedTime if any specified
 function setMode(selectedMode, selectedTime) {
+    let isValidMode = checkValidMode(selectedMode)
+
+    // Check if mode is valid
+    if (isValidMode) {
+        // Set global state "mode" with the selectedMode
+        mode = selectedMode
+
+        resetTimer()
+
+        if (mode === 'race') {
+            setCountdownTimer(selectedTime)
+            toggleRaceModal()
+        } else if (mode === 'pace') {
+            // Render test
+        }
+
+    } else {
+        console.error('Invalid selectedMode in setMode()')
+    }
+}
+
+// Check the selectedMode if it matches a validMode (returns boolean)
+function checkValidMode(selectedMode) {
     const validModes = {
         'race': true,
         'pace': true
     }
 
-    // Check if selectedMode matches a validMode
     if (validModes[selectedMode]) {
-        if (selectedMode === 'race') {
-            setTestTimer(selectedTime)
-        } else if (selectedMode === 'pace') {
-            setTestTimer(0)
-            console.log('pace')
-        }
+        return true
     } else {
-        console.error('Invalid selectedMode in setMode()')
+        return false
     }
 }
 
