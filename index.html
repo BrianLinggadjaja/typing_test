@@ -20,6 +20,7 @@
         <script src="./js/leaderboard.js" defer></script>
         <script src="./js/modeSelector.js" defer></script>
         <script src="./js/timer.js" defer></script>
+        <script src="./js/prompt.js" defer></script>
         <script src="./js/progressValidator.js" defer></script>
         <script src="./js/entry.js" defer></script>
     </head>
@@ -45,10 +46,13 @@
                     </div>
     
                     <table id="leaderboardTable" class="leaderboard-score hide">
-                        <tr>
-                            <th>Mode</th>
-                            <th>Score</th>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>Mode</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardTableData"></tbody>
                     </table>
                 </section>
     

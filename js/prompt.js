@@ -1,3 +1,8 @@
+/*
+    * Prompts
+    */
+
+
 const pacePrompts = [
     // Prompt 1
     `Shewing met parties gravity husband sex pleased. On to no kind do next feel held walk. Last own loud and knew give gay four. Sentiments motionless or principles preference excellence am. Literature surrounded insensible at indulgence or to admiration remarkably. Matter future lovers desire marked boy use. Chamber reached do he nothing be.`,

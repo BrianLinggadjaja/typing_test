@@ -1,3 +1,9 @@
+
+/*
+    * Functionality
+    */
+
+
 // Checks for any stored leaderboards in localStorage, updates if any
 function checkForStoredLeaderboard() {
     let storedLeaderboard = JSON.parse(localStorage.getItem('leaderboard'))
@@ -12,25 +18,13 @@ function checkForStoredLeaderboard() {
 }
 
 function populateLeaderboard() {
-    const leaderboardTable = document.querySelector('#leaderboardTable')
-
+    // Reverse array to display most recent scores
+    leaderboard.reverse()
     for (const entry of leaderboard) {
         let isEntryValid = checkIfEntryIsValid(entry)
 
         if (isEntryValid) {
-            // Create the proper elements
-            let tableRow = document.createElement('tr')
-            let modeNode = document.createElement('td')
-            let scoreNode = document.createElement('td')
-    
-            // Inser mode & score data
-            modeNode.innerText = entry[0]
-            scoreNode.innerText = entry[1]
-    
-            // Append the table nodes into the leaderboard element
-            tableRow.appendChild(modeNode)
-            tableRow.appendChild(scoreNode)
-            leaderboardTable.appendChild(tableRow)
+            addEntry(entry)
         }
     }
 }
@@ -57,7 +51,42 @@ function addScoreEntry(selectedMode, totalScore) {
         // Add score entry at the start of the array if valid
         let scoreEntry = [selectedMode, totalScore]
         leaderboard.unshift(scoreEntry)
+        console.log(leaderboard)
+
+        // Update localStorage with new leaderboard
+        localStorage.setItem('leaderboard', JSON.stringify(leaderboard))
+
+        // Update leaderboard with new entry
+        addEntry(scoreEntry)
+
+        if (isLeaderboardTableHidden()) {
+            toggleLeaderboardTable()
+        }
     } else {
         console.error('Invalid score entry in addScoreEntry()')
     }
+}
+
+
+/*
+    * Render
+    */
+
+
+function addEntry(entry) {
+    const leaderboardTable = document.querySelector('#leaderboardTableData')
+
+    // Create the proper elements
+    let tableRow = document.createElement('tr')
+    let modeNode = document.createElement('td')
+    let scoreNode = document.createElement('td')
+
+    // Inser mode & score data
+    modeNode.innerText = entry[0]
+    scoreNode.innerText = entry[1]
+
+    // Append the table nodes into the leaderboard element
+    tableRow.appendChild(modeNode)
+    tableRow.appendChild(scoreNode)
+    leaderboardTable.prepend(tableRow)
 }

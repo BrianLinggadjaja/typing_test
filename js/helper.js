@@ -14,7 +14,7 @@ String.prototype.removeDuplicateSpaces = function () {
     */
 
 
-let leaderboard = null
+let leaderboard = []
 
 let timer = null
 let hasTimerStarted = false
@@ -35,14 +35,23 @@ let totalSeconds = 0
 function toggleLeaderboardTable() {
     const noLeaderboardMessage = document.querySelector('#noLeaderboardMessage')
     const leaderboardTable = document.querySelector('#leaderboardTable')
-    let isLeaderboardTableHidden = leaderboardTable.classList.contains('hide')
 
-    if (isLeaderboardTableHidden) {
+    if (isLeaderboardTableHidden()) {
         noLeaderboardMessage.classList.add('hide')
         leaderboardTable.classList.remove('hide')
     } else {
         noLeaderboardMessage.classList.remove('hide')
         leaderboardTable.classList.add('hide')
+    }
+}
+
+function isLeaderboardTableHidden() {
+    let isLeaderboardTableHidden = leaderboardTable.classList.contains('hide')
+
+    if (isLeaderboardTableHidden) {
+        return true
+    } else {
+        return false
     }
 }
 

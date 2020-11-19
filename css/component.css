@@ -66,6 +66,7 @@
 
 .prompt {
     overflow: auto;
+    user-select: none;
     max-height: 12rem;
 }
 
