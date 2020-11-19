@@ -41,7 +41,18 @@ function randomlySelectPrompt(mode) {
 
 function updatePrompt() {
     const promptElement = document.querySelector('.prompt')
-    promptElement.innerText = selectedPrompt
+    let characterArray = selectedPrompt.split('')
+
+    // Clear old prompt
+    promptElement.textContent = ''
+
+    // Add a span for each character
+    for (const character of characterArray) {
+        let span = document.createElement('span')
+        span.innerText = character
+
+        promptElement.appendChild(span)
+    }
 }
 
 

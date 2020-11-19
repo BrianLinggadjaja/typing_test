@@ -51,7 +51,6 @@ function addScoreEntry(selectedMode, totalScore) {
         // Add score entry at the start of the array if valid
         let scoreEntry = [selectedMode, totalScore]
         leaderboard.unshift(scoreEntry)
-        console.log(leaderboard)
 
         // Update localStorage with new leaderboard
         localStorage.setItem('leaderboard', JSON.stringify(leaderboard))

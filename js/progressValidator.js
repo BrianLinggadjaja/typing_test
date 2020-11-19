@@ -1,11 +1,7 @@
 function checkForTestProgress() {
     let response = document.querySelector('#response').value
 
-    // use .trim() to remove leading and trailing spaces
-
-    // Remove any duplicate spaces within string
-    selectedPrompt = 'test  test'.removeDuplicateSpaces()
-    response = response.removeDuplicateSpaces()
+    console.log(response)
 
     // Check for FULL string match and mark as complete
     if (!hasTimerStarted) {
@@ -19,7 +15,13 @@ function checkForTestProgress() {
     console.log(response)
 }
 
-function removeDuplicateSpaces(string) {
-    // Find any duplicate spaces and remove them
-    return string.replace(/\s+/g, ' ')
+function resetTypingTest() {
+    clearResponse()
+    resetTimer()
+    toggleTypingTestView()
+}
+
+function clearResponse() {
+    // Clear response textarea
+    document.querySelector('#response').value = ''
 }

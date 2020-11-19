@@ -85,6 +85,14 @@
     border-radius: 0.75rem;
 }
 
+.reset {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 2rem;
+}
+
 .race-modal {
     background-color: rgba(25, 25, 25, 0.9);
     display: flex;

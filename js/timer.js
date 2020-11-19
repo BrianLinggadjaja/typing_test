@@ -25,6 +25,7 @@ function setCountdownTimer(selectedTime) {
 }
 
 function resetTimer() {
+    clearInterval(timer)
     hasTimerStarted = false
     totalMinutes = 0
     totalSeconds = 0
