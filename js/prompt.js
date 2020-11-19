@@ -3,6 +3,53 @@
     */
 
 
+// Choose a random prompt based on the "mode"
+function randomlySelectPrompt(mode) {
+    let isValidMode = checkValidMode(mode)
+
+    // Randomly selected an associated "mode" prompt
+    if (isValidMode && (mode === 'race')) {
+        let selectedRacePromptIndex = Math.floor((Math.random() * racePrompts.length) + 0)
+        let selectedRacePrompt = racePrompts[selectedRacePromptIndex]
+
+        // Remove leading, trailing, & duplicate spaces
+        selectedRacePrompt.trim()
+        selectedRacePrompt.removeDuplicateSpaces()
+
+        // Update selectedPrompt global state
+        selectedPrompt = selectedRacePrompt
+
+        // Render newly selected prompt
+        updatePrompt()
+    } else if (isValidMode && (mode === 'pace')) {
+        let selectedPacePromptIndex = Math.floor((Math.random() * pacePrompts.length) + 0)
+        let selectedPacePrompt = pacePrompts[selectedPacePromptIndex]
+
+        // Remove leading, trailing, & duplicate spaces
+        selectedPacePrompt.trim()
+        selectedPacePrompt.removeDuplicateSpaces()
+
+        // Update selectedPrompt global state
+        selectedPrompt = selectedPacePrompt
+
+        // Render newly selected prompt
+        updatePrompt()
+    } else {
+        console.error('Invalid "mode" selected in randomlySelectPrompt()')
+    }
+}
+
+function updatePrompt() {
+    const promptElement = document.querySelector('.prompt')
+    promptElement.innerText = selectedPrompt
+}
+
+
+/*
+    * Prompts
+    */
+
+
 const pacePrompts = [
     // Prompt 1
     `Shewing met parties gravity husband sex pleased. On to no kind do next feel held walk. Last own loud and knew give gay four. Sentiments motionless or principles preference excellence am. Literature surrounded insensible at indulgence or to admiration remarkably. Matter future lovers desire marked boy use. Chamber reached do he nothing be.`,

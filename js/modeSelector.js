@@ -11,9 +11,11 @@ function setMode(selectedMode, selectedTime) {
 
         if (mode === 'race') {
             setCountdownTimer(selectedTime)
+            randomlySelectPrompt(mode)
             toggleTypingTestView()
             toggleRaceModal()
         } else if (mode === 'pace') {
+            randomlySelectPrompt(mode)
             toggleTypingTestView()
         }
 
