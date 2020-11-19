@@ -21,5 +21,8 @@
 
     // Response Actions
     const responseTextarea = document.querySelector('#response')
-    responseTextarea.addEventListener('keydown', startTestTimer)
+    responseTextarea.addEventListener('keyup', () => {
+        startTestTimer()
+        checkForTestCompletion()
+    })
 })()

@@ -32,12 +32,6 @@ function resetTimer() {
     updateClock()
 }
 
-
-/*
-    * Clock
-    */
-
-
 function startTestTimer() {
     let isValidMode = checkValidMode(mode)
 
@@ -60,7 +54,7 @@ function startCountdownTimer() {
     timer = setInterval(() => {
         // Check for end of Countdown otherwise calculate totalMinutes and totalSeconds
         if ((totalMinutes <= 0) && (totalSeconds <= 0)) {
-            // Call calculateWPM && clearTimer
+            // Call calculateWPM && clear timer
             console.log('completed')
             clearInterval(timer)
         } else if ((totalMinutes >= 1) && (totalSeconds <= 1)) {
