@@ -11,9 +11,10 @@ function setMode(selectedMode, selectedTime) {
 
         if (mode === 'race') {
             setCountdownTimer(selectedTime)
+            toggleTypingTestView()
             toggleRaceModal()
         } else if (mode === 'pace') {
-            // Render test
+            toggleTypingTestView()
         }
 
     } else {
@@ -32,17 +33,5 @@ function checkValidMode(selectedMode) {
         return true
     } else {
         return false
-    }
-}
-
-// Option a time selector modal when "race" mode selected
-function toggleRaceModal() {
-    const raceModal = document.querySelector('.race-modal')
-    let isModalHidden = raceModal.classList.contains('hide')
-
-    if (isModalHidden) {
-        raceModal.classList.remove('hide')
-    } else {
-        raceModal.classList.add('hide')
     }
 }

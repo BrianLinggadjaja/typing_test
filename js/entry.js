@@ -1,4 +1,8 @@
+// Entry Point
 (() => {
+    // Check if any leaderboard scores are saved; render proper view
+    checkForStoredLeaderboard()
+
     // Race Mode Actions
     const raceButton = document.querySelector('#raceButton')
     const raceOneMinute = document.querySelector('#raceOne')
@@ -21,8 +25,5 @@
 
     // Response Actions
     const responseTextarea = document.querySelector('#response')
-    responseTextarea.addEventListener('keyup', () => {
-        startTestTimer()
-        checkForTestCompletion()
-    })
+    responseTextarea.addEventListener('keyup', checkForTestProgress)
 })()

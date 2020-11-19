@@ -1,5 +1,3 @@
-
-
 /* Components */
 .header {
     background-color: var(--color-primary);
@@ -16,10 +14,15 @@
     text-align: center;
 }
 
+.leaderboard-header {
+    margin-bottom: 1rem;
+}
+
 .leaderboard-score {
     background-color: var(--color-table);
     color: var(--color-table-text);
     border: 0.25rem solid var(--color-table-border);
+    font-size: 1.25rem;
     text-align: center;
     width: 75%;
     max-width: 30rem;
@@ -31,6 +34,7 @@
     flex-flow: row;
     justify-content: center;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .timer {
@@ -49,7 +53,7 @@
 .typing-test {
     font-size: 1.5rem;
     max-width: 75rem;
-    margin: 3rem auto 0 auto;
+    margin: 1rem auto 0 auto;
     padding: 1rem 2rem;
 }
 

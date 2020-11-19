@@ -1,14 +1,16 @@
-function checkForTestCompletion() {
+function checkForTestProgress() {
     let response = document.querySelector('#response').value
 
     // use .trim() to remove leading and trailing spaces
 
     // Remove any duplicate spaces within string
-    selectedPrompt = 'test  test  '.removeDuplicateSpaces()
+    selectedPrompt = 'test  test'.removeDuplicateSpaces()
     response = response.removeDuplicateSpaces()
 
     // Check for FULL string match and mark as complete
-    if (response === selectedPrompt) {
+    if (!hasTimerStarted) {
+        startTestTimer()
+    } else if (response === selectedPrompt) {
         // markTestCompleted
         console.log(true)
     }
