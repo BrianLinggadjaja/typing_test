@@ -1,7 +1,9 @@
 function checkForTestCompletion() {
     let response = document.querySelector('#response').value
 
-    // Remove any extra spaces within string
+    // use .trim() to remove leading and trailing spaces
+
+    // Remove any duplicate spaces within string
     selectedPrompt = 'test  test  '.removeDuplicateSpaces()
     response = response.removeDuplicateSpaces()
 
