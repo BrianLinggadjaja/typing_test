@@ -12,12 +12,8 @@ function randomlySelectPrompt(mode) {
         let selectedRacePromptIndex = Math.floor((Math.random() * racePrompts.length) + 0)
         let selectedRacePrompt = racePrompts[selectedRacePromptIndex]
 
-        // Remove leading, trailing, & duplicate spaces
-        selectedRacePrompt.trim()
-        selectedRacePrompt.removeDuplicateSpaces()
-
-        // Update selectedPrompt global state
-        selectedPrompt = selectedRacePrompt
+        // Set prompt in global state
+        setPrompt(selectedRacePrompt)
 
         // Render newly selected prompt
         updatePrompt()
@@ -25,12 +21,8 @@ function randomlySelectPrompt(mode) {
         let selectedPacePromptIndex = Math.floor((Math.random() * pacePrompts.length) + 0)
         let selectedPacePrompt = pacePrompts[selectedPacePromptIndex]
 
-        // Remove leading, trailing, & duplicate spaces
-        selectedPacePrompt.trim()
-        selectedPacePrompt.removeDuplicateSpaces()
-
-        // Update selectedPrompt global state
-        selectedPrompt = selectedPacePrompt
+        // Set prompt in global state
+        setPrompt(selectedPacePrompt)
 
         // Render newly selected prompt
         updatePrompt()
@@ -39,21 +31,46 @@ function randomlySelectPrompt(mode) {
     }
 }
 
+function setPrompt(prompt) {
+    // Remove leading, trailing, & duplicate spaces
+    prompt.trim()
+    prompt.removeDuplicateSpaces()
+
+    // Set selectedPrompt from global state with the prompt provided
+    selectedPrompt = prompt
+}
+
 function updatePrompt() {
     const promptElement = document.querySelector('.prompt')
-    let characterArray = selectedPrompt.split('')
+    const wordsArray = selectedPrompt.split(' ')
 
     // Clear old prompt
     promptElement.textContent = ''
 
-    // Add a span for each character
-    for (const character of characterArray) {
-        let span = document.createElement('span')
-        span.classList.add('char')
-        span.innerText = character
+    for (const word of wordsArray) {
+        let wordSpan = document.createElement('span')
+        wordSpan.classList.add('word')
 
-        promptElement.appendChild(span)
+        let characterArray = word.split('')
+
+        // Add a span for each character
+        for (const character of characterArray) {
+            let characterSpan = document.createElement('span')
+            characterSpan.classList.add('char')
+            characterSpan.innerText = character
+
+            wordSpan.appendChild(characterSpan)
+        }
+
+        // Add space after each word
+        let spaceSpan = document.createElement('span')
+        spaceSpan.classList.add('char')
+        spaceSpan.innerText = ' '
+        wordSpan.appendChild(spaceSpan)
+
+        promptElement.appendChild(wordSpan)
     }
+
 }
 
 

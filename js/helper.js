@@ -26,6 +26,8 @@ let selectedPrompt = null
 let totalMinutes = 0
 let totalSeconds = 0
 
+let currentWordIndex = 0
+
 
 /*
     * Render
