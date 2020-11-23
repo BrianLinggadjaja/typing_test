@@ -24,15 +24,6 @@ function setCountdownTimer(selectedTime) {
     }
 }
 
-function resetTimer() {
-    clearInterval(timer)
-    hasTimerStarted = false
-    totalMinutes = 0
-    totalSeconds = 0
-
-    updateClock()
-}
-
 function startTestTimer() {
     let isValidMode = checkValidMode(mode)
 
@@ -84,6 +75,18 @@ function startStopwatchTimer() {
     }, 1000) // Set timer for every second
 }
 
+function stopTimer() {
+    clearInterval(timer)
+}
+
+function resetTimer() {
+    stopTimer()
+    hasTimerStarted = false
+    totalMinutes = 0
+    totalSeconds = 0
+
+    updateClock()
+}
 
 /*
     * Render

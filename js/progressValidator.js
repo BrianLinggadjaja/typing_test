@@ -1,70 +1,64 @@
 function checkForTestProgress() {
-    const promptWordsArray = selectedPrompt.split(' ')
-    let response = document.querySelector('#response').value
+    let responseText = document.querySelector('#response').value
+    // Remove duplicate spaces & trim leading/trailing spaces
+    responseText = responseText.trim()
+    responseText = responseText.removeDuplicateSpaces()
 
-    // Start test timer if havent already
+    // Compare response & prompt words and highlight correct characters
+    compareCurrentWord(responseText)
+
+    // Start test timer if test timer hasn't started
     if (!hasTimerStarted) {
         startTestTimer()
-    }
-
-    /*
-        * Progress validation Algo
-        * Check for full test completion (end of test)
-        * Check for word completion
-        * Check for character completion for the current word
-        */
-
-    // (currentWordIndex === wordsArrayLength) && (responseText === wordArray[currentWordIndex])
-    // (responseText === wordArray[currentWordIndex])
-        // Move to next word
-    // On keyup; response.length; currentWordArray[response.length]; compare (response.length === currentWordArray[response.length])
-        // Highlight if matches
-    // Check if response.length === currentWordArray.length
-        // match full string for responseText and currentWord
-
-    if (responseText === promptText) {
-        // Stop timer
-        // Remove event listener on textarea
-        // Complete test
-    } else if ()
-
-    // Check for FULL string match and mark as complete
-    if (!hasTimerStarted) {
-        startTestTimer()
-        checkWordCompletion(promptWordsArray, response)
-    } else if (response === selectedPrompt) {
-        // Stop timer & show results & addScoreEntry(selectedMode, totalScore)
-        clearInterval(timer)
     } else {
-        // check for current word
-        // compare & highlight characters
-        // some way to check for word completion?
-        checkWordCompletion(promptWordsArray, response)
+        let totalPromptWords = (promptWordsArray.length - 1)
+        let isWordMatched = (responseText === promptWordsArray[currentWordIndex])
+        let isTestCompleted = (currentWordIndex === totalPromptWords) && (isWordMatched)
+
+        // Check if word is completed && test completion
+        if (isTestCompleted && isWordMatched) {
+            stopTimer()
+            clearResponse()
+            setResponsePlaceholder('Completed Test!')
+            allowTypingTestControls(false)
+        } else if (isWordMatched) {
+            currentWordIndex += 1
+            clearResponse()
+            setResponsePlaceholder(promptWordsArray[currentWordIndex])
+        }
     }
 }
 
-function checkWordCompletion(promptWordsArray, response) {
-    const prompt = document.querySelector('.prompt')
-    console.log(prompt.children, promptWordsArray[currentWordIndex], response)
-    let currentWord = prompt.children[currentWordIndex]
-    console.log(currentWord)
+// Compare response & prompt words and highlight correct characters
+function compareCurrentWord(responseText) {
+    let currentWord = promptWordsArray[currentWordIndex]
+    let currentWordLength = currentWord.length
 
-    // let currentWordArray = promptWordsArray[currentWordIndex]
-    // let responseArray = response.value.split('')
-    // for (let i = 0; i <= response.length; i += 1) {
-    //     if (responseArray[i] === currentWordArray[i]) {
-    //         console.log(true)
-    //     }
-    // }
+    let wordPromptArray = currentWord.split('')
+    let responsePromptArray = responseText.split('')
+
+    for (let i = 0; i < currentWordLength; i += 1) {
+        let currenWordElement = selectedPromptChildNodes[currentWordIndex]
+        let currentCharacterElement = currenWordElement.children[i]
+
+        if (wordPromptArray[i] === responsePromptArray[i]) {
+            currentCharacterElement.classList.add('hl')
+        } else {
+            currentCharacterElement.classList.remove('hl')
+        }
+    }
+}
+
+function clearResponse() {
+    document.querySelector('#response').value = ''
+}
+
+function setResponsePlaceholder(replacementString) {
+    document.querySelector('#response').placeholder = replacementString
 }
 
 function resetTypingTest() {
     clearResponse()
     resetTimer()
     toggleTypingTestView()
-}
-
-function clearResponse() {
-    // Clear response textarea
-    document.querySelector('#response').value = ''
 }

@@ -12,20 +12,17 @@ String.prototype.removeDuplicateSpaces = function () {
 /*
     * Global State
     */
-
-
 let leaderboard = []
 
-let timer = null
 let hasTimerStarted = false
-
-let mode = null
-
-let selectedPrompt = null
-
+let timer = null
 let totalMinutes = 0
 let totalSeconds = 0
 
+let mode = null
+let selectedPrompt = null
+let selectedPromptChildNodes = null
+let promptWordsArray = []
 let currentWordIndex = 0
 
 
@@ -80,5 +77,16 @@ function toggleRaceModal() {
         raceModal.classList.remove('hide')
     } else {
         raceModal.classList.add('hide')
+    }
+}
+
+function allowTypingTestControls(isActive) {
+    // If true enable eventlisteners for typing test else disable
+    const responseTextarea = document.querySelector('#response')
+
+    if (isActive) {
+        responseTextarea.addEventListener('keyup', checkForTestProgress)
+    } else {
+        responseTextarea.removeEventListener('keyup', checkForTestProgress, false)
     }
 }

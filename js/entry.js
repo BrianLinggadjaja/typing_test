@@ -24,9 +24,6 @@
     paceButton.addEventListener('click', setMode.bind(this, 'pace'))
 
     // Response Actions
-    const responseTextarea = document.querySelector('#response')
     const resetTest = document.querySelector('#resetTest')
-
-    responseTextarea.addEventListener('keyup', checkForTestProgress)
     resetTest.addEventListener('click', resetTypingTest)
 })()

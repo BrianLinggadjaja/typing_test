@@ -4,21 +4,22 @@ function setMode(selectedMode, selectedTime) {
 
     // Check if mode is valid
     if (isValidMode) {
-        // Set global state "mode" with the selectedMode
+        // Set global state "mode" with the selectedMode & reset currentWordIndex
         mode = selectedMode
+        currentWordIndex = 0
 
+        // Restart test
         resetTimer()
+        randomlySelectPrompt(mode)
+        setResponsePlaceholder('Start typing here to start the test...')
+        allowTypingTestControls(true)
+        toggleTypingTestView()
 
+        // If "race" mode selected, request countdown time
         if (mode === 'race') {
             setCountdownTimer(selectedTime)
-            randomlySelectPrompt(mode)
-            toggleTypingTestView()
             toggleRaceModal()
-        } else if (mode === 'pace') {
-            randomlySelectPrompt(mode)
-            toggleTypingTestView()
         }
-
     } else {
         console.error('Invalid selectedMode in setMode()')
     }

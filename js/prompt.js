@@ -16,7 +16,7 @@ function randomlySelectPrompt(mode) {
         setPrompt(selectedRacePrompt)
 
         // Render newly selected prompt
-        updatePrompt()
+        renderPrompt()
     } else if (isValidMode && (mode === 'pace')) {
         let selectedPacePromptIndex = Math.floor((Math.random() * pacePrompts.length) + 0)
         let selectedPacePrompt = pacePrompts[selectedPacePromptIndex]
@@ -25,7 +25,7 @@ function randomlySelectPrompt(mode) {
         setPrompt(selectedPacePrompt)
 
         // Render newly selected prompt
-        updatePrompt()
+        renderPrompt()
     } else {
         console.error('Invalid "mode" selected in randomlySelectPrompt()')
     }
@@ -33,14 +33,16 @@ function randomlySelectPrompt(mode) {
 
 function setPrompt(prompt) {
     // Remove leading, trailing, & duplicate spaces
-    prompt.trim()
-    prompt.removeDuplicateSpaces()
+    prompt = prompt.trim()
+    prompt = prompt.removeDuplicateSpaces()
 
     // Set selectedPrompt from global state with the prompt provided
+    selectedPromptChildNodes = document.querySelector('.prompt').children
     selectedPrompt = prompt
+    promptWordsArray = prompt.split(' ')
 }
 
-function updatePrompt() {
+function renderPrompt() {
     const promptElement = document.querySelector('.prompt')
     const wordsArray = selectedPrompt.split(' ')
 

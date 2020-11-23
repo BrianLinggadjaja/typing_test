@@ -25,6 +25,7 @@
     --color-response: rgb(65, 35, 45);
     --color-response-darker: rgb(50, 28, 35);
     --color-response-text: rgb(245, 245, 245);
+    --color-response-placeholder: rgb(200, 200, 200);
 
     --color-modal: rgb(230, 230, 230);
 }

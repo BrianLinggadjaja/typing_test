@@ -85,6 +85,10 @@
     border-radius: 0.75rem;
 }
 
+.response > textarea::placeholder {
+    color: var(--color-response-placeholder);
+}
+
 .reset {
     display: flex;
     flex-flow: row;
