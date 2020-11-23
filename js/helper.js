@@ -29,6 +29,8 @@ let selectedPromptChildNodes = null
 let promptWordsArray = []
 let currentWordIndex = 0
 
+let WPMScaling = 1.25
+
 
 /*
     * Render
