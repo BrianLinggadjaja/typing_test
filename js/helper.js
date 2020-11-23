@@ -15,9 +15,11 @@ String.prototype.removeDuplicateSpaces = function () {
 
 
 let leaderboard = []
+let totalScore = 0
 
 let hasTimerStarted = false
 let timer = null
+let initalTime = 0
 let totalMinutes = 0
 let totalSeconds = 0
 
@@ -79,6 +81,18 @@ function toggleRaceModal() {
         raceModal.classList.remove('hide')
     } else {
         raceModal.classList.add('hide')
+    }
+}
+
+function toggleScoreModal() {
+    const scoreModal = document.querySelector('.score-modal')
+
+    let isModalHidden = scoreModal.classList.contains('hide')
+
+    if (isModalHidden) {
+        scoreModal.classList.remove('hide')
+    } else {
+        scoreModal.classList.add('hide')
     }
 }
 

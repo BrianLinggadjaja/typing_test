@@ -23,7 +23,10 @@
 
     paceButton.addEventListener('click', setMode.bind(this, 'pace'))
 
-    // Response Actions
+    // TestActions
+    const confirmScore = document.querySelector('#confirmScore')
     const resetTest = document.querySelector('#resetTest')
+
+    confirmScore.addEventListener('click', resetTypingTest)
     resetTest.addEventListener('click', resetTypingTest)
 })()

@@ -103,6 +103,7 @@
     margin-top: 2rem;
 }
 
+.score-modal,
 .race-modal {
     background-color: rgba(25, 25, 25, 0.9);
     display: flex;
@@ -116,6 +117,7 @@
     width: 100%;
 }
 
+.score-selector,
 .race-selector {
     background-color: var(--color-modal);
     display: inline-flex;
@@ -130,6 +132,20 @@
     padding: 2rem 1.5rem;
 }
 
+.score-selector {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.score {
+    font-size: 4rem;
+}
+
+.score-confirm {
+    margin-top: 3rem;
+}
+
+.score-selector-options,
 .race-selector-options {
     margin-top: 1rem;
 }

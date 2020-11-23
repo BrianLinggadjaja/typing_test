@@ -19,6 +19,9 @@ function setCountdownTimer(selectedTime) {
     if (selectedPreset) {
         totalMinutes = selectedTime
 
+        // Store initalTime to be used in WPM calculations later
+        initalTime = selectedTime
+
         // Update render with a valid selectedTime
         updateClock()
     }
@@ -46,12 +49,15 @@ function startCountdownTimer() {
     timer = setInterval(() => {
         // Check for end of Countdown otherwise calculate totalMinutes and totalSeconds
         if ((totalMinutes <= 0) && (totalSeconds <= 0)) {
-            // Call calculateWPM && clear timer
-            stopTimer(timer)
+            stopTimer()
             clearResponse()
             setResponsePlaceholder('Test Complete!')
             allowTypingTestControls(false)
+
+            // Calculate WPM & Render modal
             calculateWPM()
+            renderTotalScore()
+            toggleScoreModal()
         } else if ((totalMinutes >= 1) && (totalSeconds <= 1)) {
             totalMinutes -= 1
             totalSeconds = 59

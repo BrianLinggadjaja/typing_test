@@ -26,7 +26,11 @@ function checkForTestProgress() {
             clearResponse()
             setResponsePlaceholder('Test Complete!')
             allowTypingTestControls(false)
+
+            // Calculate WPM & Render modal
             calculateWPM()
+            renderTotalScore()
+            toggleScoreModal()
         } else if (isWordMatched) {
             currentWordIndex += 1
             scrollCurrentWordIntoView()
@@ -72,6 +76,7 @@ function resetTypingTest() {
     clearResponse()
     resetTimer()
     toggleTypingTestView()
+    toggleScoreModal()
 }
 
 
@@ -81,5 +86,26 @@ function resetTypingTest() {
 
 
 function calculateWPM() {
-    console.log(timer, promptWordsArray, currentWordIndex)
+    let isValidMode = checkValidMode(mode)
+
+    // Calculate WPM and store into global state
+    if ((mode === 'race') && isValidMode) {
+        let WPM = parseInt( currentWordIndex / initalTime )
+        totalScore = WPM
+
+        // Update leaderboard
+        addScoreEntry(mode, WPM)
+    } else if ((mode === 'pace') && isValidMode) {
+        let WPM = parseInt(currentWordIndex / (totalMinutes + (totalSeconds / 60)))
+        totalScore = WPM
+
+        // Update leaderboard
+        addScoreEntry(mode, WPM)
+    } else {
+        console.error('Invalid "mode" in global state from calculateWPM()')
+    }
+}
+
+function renderTotalScore() {
+    document.querySelector('#score').innerText = totalScore
 }
