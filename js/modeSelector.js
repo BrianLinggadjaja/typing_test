@@ -14,6 +14,7 @@ function setMode(selectedMode, selectedTime) {
         setResponsePlaceholder('Start typing here to start the test...')
         allowTypingTestControls(true)
         toggleTypingTestView()
+        scrollCurrentWordIntoView()
 
         // If "race" mode selected, request countdown time
         if (mode === 'race') {

@@ -90,13 +90,13 @@ function calculateWPM() {
 
     // Calculate WPM and store into global state
     if ((mode === 'race') && isValidMode) {
-        let WPM = parseInt( currentWordIndex / initalTime )
+        let WPM = parseInt( (currentWordIndex / initalTime) * 1.35 )
         totalScore = WPM
 
         // Update leaderboard
         addScoreEntry(mode, WPM)
     } else if ((mode === 'pace') && isValidMode) {
-        let WPM = parseInt(currentWordIndex / (totalMinutes + (totalSeconds / 60)))
+        let WPM = parseInt( (currentWordIndex / (totalMinutes + (totalSeconds / 60))) * 1.35 )
         totalScore = WPM
 
         // Update leaderboard
