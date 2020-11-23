@@ -76,6 +76,12 @@ section {
     margin-bottom: 2rem;
 }
 
+th,
+tr {
+    width: 50%;
+    padding: 0.15rem 0.25rem;
+}
+
 button {
     cursor: pointer;
     border-radius: 2.5rem;
