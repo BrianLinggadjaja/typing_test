@@ -1,3 +1,8 @@
+/*
+    * Typing Test Functionality
+    */
+
+
 function checkForTestProgress() {
     let responseText = document.querySelector('#response').value
     // Remove duplicate spaces & trim leading/trailing spaces
@@ -19,10 +24,12 @@ function checkForTestProgress() {
         if (isTestCompleted && isWordMatched) {
             stopTimer()
             clearResponse()
-            setResponsePlaceholder('Completed Test!')
+            setResponsePlaceholder('Test Complete!')
             allowTypingTestControls(false)
+            calculateWPM()
         } else if (isWordMatched) {
             currentWordIndex += 1
+            scrollCurrentWordIntoView()
             clearResponse()
             setResponsePlaceholder(promptWordsArray[currentWordIndex])
         }
@@ -49,6 +56,10 @@ function compareCurrentWord(responseText) {
     }
 }
 
+function scrollCurrentWordIntoView() {
+    selectedPromptChildNodes[currentWordIndex].scrollIntoView()
+}
+
 function clearResponse() {
     document.querySelector('#response').value = ''
 }
@@ -61,4 +72,14 @@ function resetTypingTest() {
     clearResponse()
     resetTimer()
     toggleTypingTestView()
+}
+
+
+/*
+    * Typing Test Calculation
+    */
+
+
+function calculateWPM() {
+    console.log(timer, promptWordsArray, currentWordIndex)
 }

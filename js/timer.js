@@ -47,8 +47,11 @@ function startCountdownTimer() {
         // Check for end of Countdown otherwise calculate totalMinutes and totalSeconds
         if ((totalMinutes <= 0) && (totalSeconds <= 0)) {
             // Call calculateWPM && clear timer
-            console.log('completed')
-            clearInterval(timer)
+            stopTimer(timer)
+            clearResponse()
+            setResponsePlaceholder('Test Complete!')
+            allowTypingTestControls(false)
+            calculateWPM()
         } else if ((totalMinutes >= 1) && (totalSeconds <= 1)) {
             totalMinutes -= 1
             totalSeconds = 59

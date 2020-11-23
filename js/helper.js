@@ -12,6 +12,8 @@ String.prototype.removeDuplicateSpaces = function () {
 /*
     * Global State
     */
+
+
 let leaderboard = []
 
 let hasTimerStarted = false
