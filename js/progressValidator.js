@@ -21,7 +21,7 @@ function checkForTestProgress() {
         let isTestCompleted = (globalState.currentWordIndex === totalPromptWords) && (isWordMatched)
 
         // Check if word is completed && test completion
-        if (isTestCompleted && isWordMatched) {
+        if (isTestCompleted) {
             stopTimer()
             clearResponse()
             setResponsePlaceholder('Test Complete!')
@@ -90,7 +90,7 @@ function confirmTypingTestScore() {
 
 
 function calculateWPM() {
-    const WPMScaling = 1.5
+    const WPMScaling = 1.35
     let isValidMode = checkValidMode(globalState.mode)
 
     // Calculate WPM and store into global state

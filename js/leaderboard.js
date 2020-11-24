@@ -24,7 +24,7 @@ function populateLeaderboard() {
         let isEntryValid = checkIfEntryIsValid(entry)
 
         if (isEntryValid) {
-            addEntry(entry)
+            renderNewEntry(entry)
         }
     }
 }
@@ -42,6 +42,8 @@ function checkIfEntryIsValid(entry) {
     }
 }
 
+
+// Adds a new score entry to localStorage & updates the global state leaderboard & renders new entry
 function addScoreEntry(selectedMode, totalScore) {
     let isValidMode = checkValidMode(selectedMode)
     let isScoreANumber = !isNaN(parseInt(totalScore))
@@ -56,7 +58,7 @@ function addScoreEntry(selectedMode, totalScore) {
         localStorage.setItem('leaderboard', JSON.stringify(globalState.leaderboard))
 
         // Update leaderboard with new entry
-        addEntry(scoreEntry)
+        renderNewEntry(scoreEntry)
 
         if (isLeaderboardTableHidden()) {
             toggleLeaderboardTable()
@@ -72,7 +74,7 @@ function addScoreEntry(selectedMode, totalScore) {
     */
 
 
-function addEntry(entry) {
+function renderNewEntry(entry) {
     const leaderboardTable = document.querySelector('#leaderboardTableData')
 
     // Create the proper elements

@@ -34,6 +34,7 @@ let globalState = {
     * Event Listeners
     */
 
+
 function initalizeEventListeners() {
     // Race Mode Actions
     const raceButton = document.querySelector('#raceButton')
