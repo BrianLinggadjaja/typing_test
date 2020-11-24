@@ -149,15 +149,15 @@ function allowTypingTestControls(isActive) {
 
 
 // Test typing test by autofilling words from the prompt; takes in delay in ms
-async function testTypingTest(delay) {
-    let isDelayANumber = !isNaN(delay)
+async function testTypingTest(delayTime) {
+    let isDelayANumber = !isNaN(delayTime)
 
     // Check if delay is number before running the test
     if (isDelayANumber) {
         checkForTestProgress()
 
         for (const word of globalState.promptWordsArray) {
-            await delay(delay)
+            await delay(delayTime)
             fillWordInResponse(word)
             checkForTestProgress()
         }
