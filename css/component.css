@@ -16,7 +16,7 @@
 
 .leaderboard-wrapper {
     overflow: auto;
-    max-height: 15rem;
+    max-height: 12rem;
     width: 75%;
     max-width: 35rem;
     margin: 0 auto;

@@ -76,6 +76,10 @@ function resetTypingTest() {
     clearResponse()
     resetTimer()
     toggleTypingTestView()
+}
+
+function confirmTypingTestScore() {
+    resetTypingTest()
     toggleScoreModal()
 }
 

@@ -27,6 +27,6 @@
     const confirmScore = document.querySelector('#confirmScore')
     const resetTest = document.querySelector('#resetTest')
 
-    confirmScore.addEventListener('click', resetTypingTest)
+    confirmScore.addEventListener('click', confirmTypingTestScore)
     resetTest.addEventListener('click', resetTypingTest)
 })()
