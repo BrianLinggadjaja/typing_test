@@ -17,10 +17,10 @@ function setCountdownTimer(selectedTime) {
 
     // Check if selectedPreset matches a countdownPreset && timer has not started
     if (selectedPreset) {
-        totalMinutes = selectedTime
+        globalState.totalMinutes = selectedTime
 
         // Store initalTime to be used in WPM calculations later
-        initalTime = selectedTime
+        globalState.initalTime = selectedTime
 
         // Update render with a valid selectedTime
         updateClock()
@@ -28,15 +28,15 @@ function setCountdownTimer(selectedTime) {
 }
 
 function startTestTimer() {
-    let isValidMode = checkValidMode(mode)
+    let isValidMode = checkValidMode(globalState.mode)
 
     if (isValidMode) {
         // Check if valid "mode" provided and timer has not already started
-        if (mode === 'race' && !hasTimerStarted) {
-            hasTimerStarted = true
+        if (globalState.mode === 'race' && !globalState.hasTimerStarted) {
+            globalState.hasTimerStarted = true
             startCountdownTimer()
-        } else if (mode === 'pace' && !hasTimerStarted) {
-            hasTimerStarted = true
+        } else if (globalState.mode === 'pace' && !globalState.hasTimerStarted) {
+            globalState.hasTimerStarted = true
             startStopwatchTimer()
         }
     } else {
@@ -46,9 +46,9 @@ function startTestTimer() {
 
 // Start "race" mode timer using the totalMinutes and totalSeconds from the state
 function startCountdownTimer() {
-    timer = setInterval(() => {
+    globalState.timer = setInterval(() => {
         // Check for end of Countdown otherwise calculate totalMinutes and totalSeconds
-        if ((totalMinutes <= 0) && (totalSeconds <= 0)) {
+        if ((globalState.totalMinutes <= 0) && (globalState.totalSeconds <= 0)) {
             stopTimer()
             clearResponse()
             setResponsePlaceholder('Test Complete!')
@@ -58,11 +58,11 @@ function startCountdownTimer() {
             calculateWPM()
             renderTotalScore()
             toggleScoreModal()
-        } else if ((totalMinutes >= 1) && (totalSeconds <= 1)) {
-            totalMinutes -= 1
-            totalSeconds = 59
+        } else if ((globalState.totalMinutes >= 1) && (globalState.totalSeconds <= 1)) {
+            globalState.totalMinutes -= 1
+            globalState.totalSeconds = 59
         } else {
-            totalSeconds -= 1
+            globalState.totalSeconds -= 1
         }
 
         updateClock()
@@ -70,14 +70,14 @@ function startCountdownTimer() {
 }
 
 function startStopwatchTimer() {
-    timer = setInterval(() => {
+    globalState.timer = setInterval(() => {
         // Increment totalMinutes when totalSeconds equals a minute
         // check if prompt is completed
-        if (totalSeconds === 59) {
-            totalMinutes += 1
-            totalSeconds = 0
+        if (globalState.totalSeconds === 59) {
+            globalState.totalMinutes += 1
+            globalState.totalSeconds = 0
         } else {
-            totalSeconds += 1
+            globalState.totalSeconds += 1
         }
 
         updateClock()
@@ -85,14 +85,14 @@ function startStopwatchTimer() {
 }
 
 function stopTimer() {
-    clearInterval(timer)
+    clearInterval(globalState.timer)
 }
 
 function resetTimer() {
     stopTimer()
-    hasTimerStarted = false
-    totalMinutes = 0
-    totalSeconds = 0
+    globalState.hasTimerStarted = false
+    globalState.totalMinutes = 0
+    globalState.totalSeconds = 0
 
     updateClock()
 }
@@ -110,14 +110,14 @@ function updateClock() {
         const secondsElement = document.querySelector('.seconds')
 
         // Update minutes and seconds render
-        minutesElement.innerText = totalMinutes
-        secondsElement.innerText = totalSeconds
+        minutesElement.innerText = globalState.totalMinutes
+        secondsElement.innerText = globalState.totalSeconds
 
         // Hide minutes if less than 1
-        if (totalMinutes <= 0) {
+        if (globalState.totalMinutes <= 0) {
             const minutesWrapperElement = document.querySelector('.minutes-wrapper')
             minutesWrapperElement.classList.add('hide')
-        } else if (totalMinutes > 0) {
+        } else if (globalState.totalMinutes > 0) {
             const minutesWrapperElement = document.querySelector('.minutes-wrapper')
             minutesWrapperElement.classList.remove('hide')
         }
@@ -126,15 +126,15 @@ function updateClock() {
 
 function checkForClockValidity() {
     // Check if number && is in range
-    let isMinutesValid = (isFinite(totalMinutes) && ((totalMinutes <= 99) || (totalMinutes >= 0)))
-    let isSecondsValid = (isFinite(totalSeconds) && ((totalSeconds <= 60) || (totalSeconds >= 0)))
+    let isMinutesValid = (isFinite(globalState.totalMinutes) && ((globalState.totalMinutes <= 99) || (globalState.totalMinutes >= 0)))
+    let isSecondsValid = (isFinite(globalState.totalSeconds) && ((globalState.totalSeconds <= 60) || (globalState.totalSeconds >= 0)))
 
     // Check if valid totalMinutes && totalSeconds, otherwise reset clock
     if (isMinutesValid && isSecondsValid) {
         return true
     } else {
-        totalMinutes = 0
-        totalSeconds = 0
+        globalState.totalMinutes = 0
+        globalState.totalSeconds = 0
 
         return false
     }

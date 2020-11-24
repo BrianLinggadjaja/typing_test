@@ -14,22 +14,20 @@ String.prototype.removeDuplicateSpaces = function () {
     */
 
 
-let leaderboard = []
-let totalScore = 0
-
-let hasTimerStarted = false
-let timer = null
-let initalTime = 0
-let totalMinutes = 0
-let totalSeconds = 0
-
-let mode = null
-let selectedPrompt = null
-let selectedPromptChildNodes = null
-let promptWordsArray = []
-let currentWordIndex = 0
-
-let WPMScaling = 1.25
+let globalState = {
+    leaderboard: [],
+    totalScore: 0,
+    hasTimerStarted: false,
+    timer: null,
+    initalTime: 0,
+    totalMinutes: 0,
+    totalSeconds: 0,
+    mode: null,
+    selectedPrompt: null,
+    selectedPromptChildNodes: null,
+    promptWordsArray: [],
+    currentWordIndex: 0,
+}
 
 
 /*

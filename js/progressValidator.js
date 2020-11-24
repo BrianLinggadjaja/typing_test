@@ -13,12 +13,12 @@ function checkForTestProgress() {
     compareCurrentWord(responseText)
 
     // Start test timer if test timer hasn't started
-    if (!hasTimerStarted) {
+    if (!globalState.hasTimerStarted) {
         startTestTimer()
     } else {
-        let totalPromptWords = (promptWordsArray.length - 1)
-        let isWordMatched = (responseText === promptWordsArray[currentWordIndex])
-        let isTestCompleted = (currentWordIndex === totalPromptWords) && (isWordMatched)
+        let totalPromptWords = (globalState.promptWordsArray.length - 1)
+        let isWordMatched = (responseText === globalState.promptWordsArray[globalState.currentWordIndex])
+        let isTestCompleted = (globalState.currentWordIndex === totalPromptWords) && (isWordMatched)
 
         // Check if word is completed && test completion
         if (isTestCompleted && isWordMatched) {
@@ -32,24 +32,24 @@ function checkForTestProgress() {
             renderTotalScore()
             toggleScoreModal()
         } else if (isWordMatched) {
-            currentWordIndex += 1
+            globalState.currentWordIndex += 1
             scrollCurrentWordIntoView()
             clearResponse()
-            setResponsePlaceholder(promptWordsArray[currentWordIndex])
+            setResponsePlaceholder(globalState.promptWordsArray[globalState.currentWordIndex])
         }
     }
 }
 
 // Compare response & prompt words and highlight correct characters
 function compareCurrentWord(responseText) {
-    let currentWord = promptWordsArray[currentWordIndex]
+    let currentWord = globalState.promptWordsArray[globalState.currentWordIndex]
     let currentWordLength = currentWord.length
 
     let wordPromptArray = currentWord.split('')
     let responsePromptArray = responseText.split('')
 
     for (let i = 0; i < currentWordLength; i += 1) {
-        let currenWordElement = selectedPromptChildNodes[currentWordIndex]
+        let currenWordElement = globalState.selectedPromptChildNodes[globalState.currentWordIndex]
         let currentCharacterElement = currenWordElement.children[i]
 
         if (wordPromptArray[i] === responsePromptArray[i]) {
@@ -61,7 +61,7 @@ function compareCurrentWord(responseText) {
 }
 
 function scrollCurrentWordIntoView() {
-    selectedPromptChildNodes[currentWordIndex].scrollIntoView()
+    globalState.selectedPromptChildNodes[globalState.currentWordIndex].scrollIntoView()
 }
 
 function clearResponse() {
@@ -90,26 +90,27 @@ function confirmTypingTestScore() {
 
 
 function calculateWPM() {
-    let isValidMode = checkValidMode(mode)
+    const WPMScaling = 1.25
+    let isValidMode = checkValidMode(globalState.mode)
 
     // Calculate WPM and store into global state
-    if ((mode === 'race') && isValidMode) {
-        let WPM = parseInt( (currentWordIndex / initalTime) * WPMScaling )
-        totalScore = WPM
+    if ((globalState.mode === 'race') && isValidMode) {
+        let WPM = parseInt( (globalState.currentWordIndex / globalState.initalTime) * WPMScaling )
+        globalState.totalScore = WPM
 
         // Update leaderboard
-        addScoreEntry(mode, WPM)
-    } else if ((mode === 'pace') && isValidMode) {
-        let WPM = parseInt( (currentWordIndex / (totalMinutes + (totalSeconds / 60))) * WPMScaling )
-        totalScore = WPM
+        addScoreEntry(globalState.mode, WPM)
+    } else if ((globalState.mode === 'pace') && isValidMode) {
+        let WPM = parseInt( (globalState.currentWordIndex / (globalState.totalMinutes + (globalState.totalSeconds / 60))) * WPMScaling )
+        globalState.totalScore = WPM
 
         // Update leaderboard
-        addScoreEntry(mode, WPM)
+        addScoreEntry(globalState.mode, WPM)
     } else {
         console.error('Invalid "mode" in global state from calculateWPM()')
     }
 }
 
 function renderTotalScore() {
-    document.querySelector('#score').innerText = totalScore
+    document.querySelector('#score').innerText = globalState.totalScore
 }

@@ -5,19 +5,19 @@ function setMode(selectedMode, selectedTime) {
     // Check if mode is valid
     if (isValidMode) {
         // Set global state "mode" with the selectedMode & reset currentWordIndex
-        mode = selectedMode
-        currentWordIndex = 0
+        globalState.mode = selectedMode
+        globalState.currentWordIndex = 0
 
         // Restart test
         resetTimer()
-        randomlySelectPrompt(mode)
+        randomlySelectPrompt(globalState.mode)
         setResponsePlaceholder('Start typing here to start the test...')
         allowTypingTestControls(true)
         toggleTypingTestView()
         scrollCurrentWordIntoView()
 
         // If "race" mode selected, request countdown time
-        if (mode === 'race') {
+        if (globalState.mode === 'race') {
             setCountdownTimer(selectedTime)
             toggleRaceModal()
         }

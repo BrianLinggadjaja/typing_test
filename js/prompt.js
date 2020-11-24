@@ -8,7 +8,7 @@ function randomlySelectPrompt(mode) {
     let isValidMode = checkValidMode(mode)
 
     // Randomly selected an associated "mode" prompt
-    if (isValidMode && (mode === 'race')) {
+    if (isValidMode && (globalState.mode === 'race')) {
         let selectedRacePromptIndex = Math.floor((Math.random() * racePrompts.length) + 0)
         let selectedRacePrompt = racePrompts[selectedRacePromptIndex]
 
@@ -17,7 +17,7 @@ function randomlySelectPrompt(mode) {
 
         // Render newly selected prompt
         renderPrompt()
-    } else if (isValidMode && (mode === 'pace')) {
+    } else if (isValidMode && (globalState.mode === 'pace')) {
         let selectedPacePromptIndex = Math.floor((Math.random() * pacePrompts.length) + 0)
         let selectedPacePrompt = pacePrompts[selectedPacePromptIndex]
 
@@ -37,14 +37,14 @@ function setPrompt(prompt) {
     prompt = prompt.removeDuplicateSpaces()
 
     // Set selectedPrompt from global state with the prompt provided
-    selectedPromptChildNodes = document.querySelector('.prompt').children
-    selectedPrompt = prompt
-    promptWordsArray = prompt.split(' ')
+    globalState.selectedPromptChildNodes = document.querySelector('.prompt').children
+    globalState.selectedPrompt = prompt
+    globalState.promptWordsArray = prompt.split(' ')
 }
 
 function renderPrompt() {
     const promptElement = document.querySelector('.prompt')
-    const wordsArray = selectedPrompt.split(' ')
+    const wordsArray = globalState.selectedPrompt.split(' ')
 
     // Clear old prompt
     promptElement.textContent = ''

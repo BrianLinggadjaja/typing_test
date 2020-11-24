@@ -10,7 +10,7 @@ function checkForStoredLeaderboard() {
 
     // If storedLeaderboard exists set application state with the localStorage
     if (storedLeaderboard) {
-        leaderboard = storedLeaderboard
+        globalState.leaderboard = storedLeaderboard
         populateLeaderboard()
         toggleLeaderboardTable()
         // toggleLeaderboardTable()
@@ -19,8 +19,8 @@ function checkForStoredLeaderboard() {
 
 function populateLeaderboard() {
     // Reverse array to display most recent scores
-    leaderboard.reverse()
-    for (const entry of leaderboard) {
+    globalState.leaderboard.reverse()
+    for (const entry of globalState.leaderboard) {
         let isEntryValid = checkIfEntryIsValid(entry)
 
         if (isEntryValid) {
@@ -50,10 +50,10 @@ function addScoreEntry(selectedMode, totalScore) {
     if (isValidScoreEntry) {
         // Add score entry at the start of the array if valid
         let scoreEntry = [selectedMode, totalScore]
-        leaderboard.unshift(scoreEntry)
+        globalState.leaderboard.unshift(scoreEntry)
 
         // Update localStorage with new leaderboard
-        localStorage.setItem('leaderboard', JSON.stringify(leaderboard))
+        localStorage.setItem('leaderboard', JSON.stringify(globalState.leaderboard))
 
         // Update leaderboard with new entry
         addEntry(scoreEntry)
