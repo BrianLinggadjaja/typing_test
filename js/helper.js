@@ -140,3 +140,30 @@ function allowTypingTestControls(isActive) {
         responseTextarea.removeEventListener('keyup', checkForTestProgress, false)
     }
 }
+
+
+/*
+    * Testing
+    */
+
+
+// Test typing test by autofilling words from the prompt
+async function testTypingTest() {
+    checkForTestProgress()
+
+    for (const word of globalState.promptWordsArray) {
+        await delay(25)
+        fillWordInResponse(word)
+        checkForTestProgress()
+    }
+}
+
+// Return a promise with a set delay
+function delay(ms) {
+    return new Promise(function (resolve) { return setTimeout(resolve, ms) })
+}
+
+// Fill specified word into response box
+function fillWordInResponse(word) {
+    document.querySelector('#response').value = word
+}
