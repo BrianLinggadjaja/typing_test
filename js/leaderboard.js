@@ -42,6 +42,8 @@ function checkIfEntryIsValid(entry) {
     }
 }
 
+
+// Adds a new score entry to localStorage & updates the global state leaderboard & renders new entry
 function addScoreEntry(selectedMode, totalScore) {
     let isValidMode = checkValidMode(selectedMode)
     let isScoreANumber = !isNaN(parseInt(totalScore))
