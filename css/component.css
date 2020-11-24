@@ -16,7 +16,7 @@
 
 .leaderboard-wrapper {
     overflow: auto;
-    max-height: 12rem;
+    max-height: 15rem;
     width: 75%;
     max-width: 35rem;
     margin: 0 auto;
@@ -33,6 +33,10 @@
     font-size: 1.25rem;
     text-align: center;
     width: 100%;
+}
+
+.leaderboard-score th {
+    font-size: 1.75rem;
 }
 
 .actions {
