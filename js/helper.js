@@ -148,14 +148,21 @@ function allowTypingTestControls(isActive) {
     */
 
 
-// Test typing test by autofilling words from the prompt
-async function testTypingTest() {
-    checkForTestProgress()
+// Test typing test by autofilling words from the prompt; takes in delay in ms
+async function testTypingTest(delay) {
+    let isDelayANumber = !isNaN(delay)
 
-    for (const word of globalState.promptWordsArray) {
-        await delay(25)
-        fillWordInResponse(word)
+    // Check if delay is number before running the test
+    if (isDelayANumber) {
         checkForTestProgress()
+
+        for (const word of globalState.promptWordsArray) {
+            await delay(delay)
+            fillWordInResponse(word)
+            checkForTestProgress()
+        }
+    } else {
+        console.error('Unexpected argument passed for "delay", expecting a number from testTypingTest(delay)')
     }
 }
 
