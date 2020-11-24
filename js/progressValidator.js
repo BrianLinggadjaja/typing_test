@@ -90,7 +90,7 @@ function confirmTypingTestScore() {
 
 
 function calculateWPM() {
-    const WPMScaling = 1.45
+    const WPMScaling = 1.5
     let isValidMode = checkValidMode(globalState.mode)
 
     // Calculate WPM and store into global state
